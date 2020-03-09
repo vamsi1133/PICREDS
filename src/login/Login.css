@@ -3,61 +3,79 @@
 .login-background{
     width: 100%;
     height: 100%;
+    z-index: 1;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-image: url('./lbg-sm.jpg');
+    background-position: center;
+}
+
+.btn{
+    font-family: 'Sriracha', cursive;
+    background-color:transparent;
+    font-size: 20px;
+    width: 50%;
+    box-shadow: 3px 3px 7px black;
+    position: absolute;
+    border:solid 1px;
 }
 
 #login-button{
-    font-family: 'Sriracha', cursive;
-    background-color:transparent;
     color: #b21f66;
-    font-size: 20px;
-    width: 50%;
-    position: absolute;
     top:30%;
     left:25%;
-    border:solid 1px;
-    box-shadow: 3px 3px 7px black;
-
 }
 
 #signup-button{
-    font-family: 'Sriracha', cursive;
     color: #1b2a49;
-    background-color: transparent;
-    font-size: 20px;
-    width: 50%;
-    position: absolute;
     top:40%;
     right: 25%;
-    border:solid 1px;
-    box-shadow: 3px 3px 7px black;
 }
 
 #welcome{
-    position: relative;
-    top:15%;
-    left:28%;
+    position: absolute;
+    top:8%;
+    left:26%;
     display: inline;
+    font-size: 3rem;
+    font-weight: bold;
     font-family: 'Merienda One', cursive;
     color: white;
 }
  
+#login-blur{
+    font-family: 'Sriracha', cursive;
+    color: #293462;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    top:15%;
+}
+
+
+
+.form-group .btn{
+    margin-top: 5%;
+    right:20%
+}
+
+#signup-form{
+    padding: 20px;
+}
+
+#signup-form label{
+    font-weight: bold;
+    color: #ecfcff;
+}
 
 @media only screen and (min-device-width: 480px) {
     .login-background{
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size:100% 100%;
         background-image: url('./login-background.jpg');
     }
 
     #login-button{
         padding: 3px;
         font-size: 30px;
-        position: absolute;
         left:35%;
         top:40%;
         width: 10rem;
@@ -67,12 +85,20 @@
         font-size: 30px;
         padding: 3px;
         width: 10rem;
-        position: absolute;
         left:55%;
         top:40%;
     }
+
     #welcome{
         font-size: 5rem;
         left:40%
+    }
+
+    #login-blur{
+        left: 35%;
+    }
+
+    #signup-form{
+        left:30%
     }
 }
