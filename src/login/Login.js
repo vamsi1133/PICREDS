@@ -15,6 +15,7 @@ export default function Login(props) {
 
     return (
         <div className="login-background">
+            <h1 id="welcome">Picreds</h1>
             <button id="login-button" className="btn">LOGIN</button>
             <button id="signup-button" className="btn">SIGNUP</button>
 
