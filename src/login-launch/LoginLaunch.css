@@ -95,6 +95,31 @@
     position: relative;
     left:8rem;
 }
+
+#confirm-password-incorrect{
+    border:solid red 2px;
+}
+
+#confirm-password-correct{
+    border:solid green 2px;
+}
+
+#signup-form span{
+    color:#f67280;
+    font-weight: bold;
+    font-size: 0.7rem;
+    line-height: 0px;
+    
+}
+
+#new-password-incorrect{
+    border:solid red 2px
+}
+
+#new-password-correct{
+    border:solid green 2px
+}
+
 @media only screen and (min-device-width: 480px) {
     .login-background{
         background-image: url('./login-background.jpg');
