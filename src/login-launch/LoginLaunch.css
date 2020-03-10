@@ -10,7 +10,7 @@
     background-position: center;
 }
 
-.btn{
+#login-buttons .btn{
     font-family: 'Sriracha', cursive;
     background-color:transparent;
     font-size: 20px;
@@ -43,16 +43,30 @@
     color: white;
 }
  
-#login-blur{
+#login-form{
     font-family: 'Sriracha', cursive;
-    color: #293462;
+    color: white;
     text-align: center;
-    padding: 20px;
+    padding-top:50px;
+    padding-bottom:10px;
     position: relative;
     top:15%;
+    background-color: rgba(0, 0, 0, 0.384);
+    border-radius: 30px;
 }
 
+#login-form .btn{
+    background-color: #ecfcff;
+    left:5%;
+    width:5rem;
+    padding:0px;
+}
 
+#login-form .google-btn{
+    margin-top: 0;
+    position: relative;
+    background-color: red;
+}
 
 .form-group .btn{
     margin-top: 5%;
@@ -60,14 +74,27 @@
 }
 
 #signup-form{
+    background-color: rgba(0, 0, 0, 0.384);
     padding: 20px;
+    position: relative;
+    top: 5%;
+    border-radius: 25px;
 }
 
 #signup-form label{
     font-weight: bold;
     color: #ecfcff;
 }
-
+#login-form .login-button{
+    color:blue;
+    position: absolute;
+    right:10rem;
+}
+#login-form .signup-button{
+    color:red;
+    position: relative;
+    left:8rem;
+}
 @media only screen and (min-device-width: 480px) {
     .login-background{
         background-image: url('./login-background.jpg');
@@ -76,17 +103,23 @@
     #login-button{
         padding: 3px;
         font-size: 30px;
-        left:35%;
-        top:40%;
+        left:75%;
+        top:5%;
         width: 10rem;
     }
+
+    #login-buttons .btn{
+        width: 6rem;
+    }
+
+    
 
     #signup-button{
         font-size: 30px;
         padding: 3px;
         width: 10rem;
-        left:55%;
-        top:40%;
+        left:85%;
+        top:5%;
     }
 
     #welcome{
@@ -94,7 +127,7 @@
         left:40%
     }
 
-    #login-blur{
+    #login-form{
         left: 35%;
     }
 
