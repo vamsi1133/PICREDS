@@ -11,8 +11,9 @@
 }
 
 #login-buttons .btn{
-    font-family: 'Sriracha', cursive;
-    background-color:white;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    background-color:#f1fcfc;
     font-size: 20px;
     width: 50%;
     /* box-shadow: 3px 3px 7px black; */
@@ -21,13 +22,13 @@
 }
 
 #login-button{
-    color: #b21f66;
+    color: #1b2a49;
     top:30%;
     left:25%;
 }
 
 #signup-button{
-    color: #1b2a49;
+    color: #b21f66;
     top:40%;
     right: 25%;
 }
@@ -40,7 +41,8 @@
     font-size: 3rem;
     font-weight: bold;
     font-family: 'Merienda One', cursive;
-    color: white;
+    color: #e8f044 ;
+    text-shadow:3px 2px black;
 }
  
 #login-form{

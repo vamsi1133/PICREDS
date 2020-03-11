@@ -14,7 +14,7 @@ function Launch(){
     return (
         <div id="login-buttons" className="login-background">
             <h1 id="welcome">Picreds</h1>
-            <button id="login-button" onClick={handleLogin} className="btn">LOGIN</button>
+            <button id="login-button" onClick={handleLogin} className="btn">L<i class="fa fa-camera" aria-hidden="true"></i>GIN</button>
             <button id="signup-button"  onClick={handleSignup} className="btn">SIGNUP</button>
         </div>
     )
