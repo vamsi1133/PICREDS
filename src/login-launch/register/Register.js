@@ -69,7 +69,7 @@ export default function Register() {
                 <form className="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" onChange={handleCredentials} className="form-control"
-                        required={true} autoFocus={true} value={credentials.email} placeholder="Enter email address" />
+                        required={true} autoFocus={true} value={credentials.email} placeholder="Enter email address"  autoComplete="off"/>
                     <br></br>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" value={credentials.username} onChange={handleCredentials} className="form-control" placeholder="create username" />
