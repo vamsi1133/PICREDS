@@ -6,6 +6,7 @@ import axios from 'axios';
 
 export default function Register() {
     const history=useHistory();
+    const url="http://picreds.herokuapp.com/"
     const [passwordMatch, setPasswordMatch] = React.useState(false);
     const [pwdRegex, setPwdRegex] = React.useState(false);
     const [newpwdDirty, setnewpwdDirty] = React.useState(false);
@@ -61,7 +62,7 @@ export default function Register() {
             && credentials.dob.length > 0 && pwdRegex && passwordMatch) {
             setSubmitStatus(false);
             console.log(credentials)
-            axios.post("http://localhost:8000/register", credentials)
+            axios.post(url+"register", credentials)
                 .then(res => {
                     sessionStorage.setItem("user", res.data.token);
                     // console.log(res.data.token)

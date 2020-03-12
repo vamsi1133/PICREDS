@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default function Login(props) {
     const history = useHistory();
+    const url="http://picreds.herokuapp.com/"
     const [credentials, setCredentials] = React.useState({
         username: "",
         password: ""
@@ -20,7 +21,7 @@ export default function Login(props) {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(credentials)
-        axios.post("http://localhost:8000/authenticate",credentials)
+        axios.post(url+"authenticate",credentials)
         .then(res=>{
             sessionStorage.setItem("user",res.data.token);
             history.push("/home")

@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 
 
 export default function Home(){
+    const url="http://picreds.herokuapp.com/"
     const [id,setId]=React.useState("");
     const history = useHistory()
 
     React.useEffect(()=>{
         const token = sessionStorage.getItem("user");
-        axios.get("http://localhost:8000/mytest",{headers: {'x-access-token': token}})
+        axios.get(url+"mytest",{headers: {'x-access-token': token}})
         .then(res=>{
             setId(res.data.username)
         })
