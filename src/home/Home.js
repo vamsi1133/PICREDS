@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 
 
 export default function Home(){
-    const url="http://picreds.herokuapp.com/"
+    const url="https://picred-server.herokuapp.com/"
+    // const url="http://localhost:8000/"
     const [id,setId]=React.useState("");
     const history = useHistory()
 

@@ -6,7 +6,8 @@ import axios from 'axios';
 
 export default function Register() {
     const history=useHistory();
-    const url="https://picreds.herokuapp.com/"
+    const url="https://picred-server.herokuapp.com/"
+    // const url="http://localhost:8000/"
     const [passwordMatch, setPasswordMatch] = React.useState(false);
     const [pwdRegex, setPwdRegex] = React.useState(false);
     const [newpwdDirty, setnewpwdDirty] = React.useState(false);

@@ -6,7 +6,8 @@ import axios from "axios";
 
 export default function Login(props) {
     const history = useHistory();
-    const url="http://picreds.herokuapp.com/"
+    const url="https://picred-server.herokuapp.com/"
+    // const url="http://localhost:8000/"
     const [credentials, setCredentials] = React.useState({
         username: "",
         password: ""
