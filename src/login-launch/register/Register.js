@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "../LoginLaunch.css";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 
 export default function Register() {
+    const history=useHistory();
     const [passwordMatch, setPasswordMatch] = React.useState(false);
     const [pwdRegex, setPwdRegex] = React.useState(false);
     const [newpwdDirty, setnewpwdDirty] = React.useState(false);
     const [confpwdDirty, setconfpwdDirty] = React.useState(false);
-    const [submitStatus, setSubmitStatus] = React.useState(false)
+    const [submitStatus, setSubmitStatus] = React.useState(false);
+    const [errorMsg,setErrorMsg]=React.useState("Please provide apropriate credentials.")
     const [credentials, setCredentials] = React.useState({
         email: "",
         username: "",
@@ -51,17 +55,31 @@ export default function Register() {
         setconfpwdDirty(true)
     }
 
-    function authenticate(event) {
+    function handleSubmit(event) {
         event.preventDefault();
         if (credentials.email.length > 1 && credentials.username.length > 0 && credentials.password.length > 6
             && credentials.dob.length > 0 && pwdRegex && passwordMatch) {
             setSubmitStatus(false);
             console.log(credentials)
+            axios.post("http://localhost:8000/register", credentials)
+                .then(res => {
+                    sessionStorage.setItem("user", res.data.token);
+                    // console.log(res.data.token)
+                    history.push("/home")
+                })
+                .catch(err=>{
+                    if(err.response){
+                        setSubmitStatus(true);
+                        // console.log(err.response);
+                        setErrorMsg(err.response.data);
+                    }
+                })
         }
         else {
             setSubmitStatus(true);
         }
     }
+
 
     return (
         <div className="login-background">
@@ -69,7 +87,7 @@ export default function Register() {
                 <form className="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" onChange={handleCredentials} className="form-control"
-                        required={true} autoFocus={true} value={credentials.email} placeholder="Enter email address"  autoComplete="off"/>
+                        required={true} autoFocus={true} value={credentials.email} placeholder="Enter email address" autoComplete="off" />
                     <br></br>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" value={credentials.username} onChange={handleCredentials} className="form-control" placeholder="create username" />
@@ -86,8 +104,8 @@ export default function Register() {
                     <label for="dob">Date of birth:</label>
                     <input type="date" id="dob" name="dob" onChange={handleCredentials} value={credentials.dob} className="form-control" />
                     <br></br>
-                    <button className="btn btn-primary" onClick={authenticate}>Register</button>
-                    {submitStatus ? <span>Please provide apropriate credentials</span> : null}
+                    <button className="btn btn-primary" onClick={handleSubmit}>Register</button>&nbsp;&nbsp;
+                    {submitStatus ? <span>{errorMsg}</span> : null}
                 </form>
             </div>
         </div>

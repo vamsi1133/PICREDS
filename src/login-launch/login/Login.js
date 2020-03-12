@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import "../LoginLaunch.css";
+import axios from "axios";
 
 export default function Login(props) {
-    const history = useHistory()
+    const history = useHistory();
     const [credentials, setCredentials] = React.useState({
         username: "",
         password: ""
@@ -19,6 +20,11 @@ export default function Login(props) {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(credentials)
+        axios.post("http://localhost:8000/authenticate",credentials)
+        .then(res=>{
+            sessionStorage.setItem("user",res.data.token);
+            history.push("/home")
+        })
     }
 
     function handleSignup() {
