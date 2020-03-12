@@ -6,8 +6,10 @@ import axios from "axios";
 
 export default function Login(props) {
     const history = useHistory();
-    const url="https://picred-server.herokuapp.com/"
-    // const url="http://localhost:8000/"
+    const url = "https://picred-server.herokuapp.com/"
+    // const url = "http://localhost:8000/"
+    const [errMsg, setErrMsg] = React.useState("")
+    const [logClick, setLoginClick] = React.useState(false)
     const [credentials, setCredentials] = React.useState({
         username: "",
         password: ""
@@ -21,12 +23,20 @@ export default function Login(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setLoginClick(true)
         console.log(credentials)
-        axios.post(url+"authenticate",credentials)
-        .then(res=>{
-            sessionStorage.setItem("user",res.data.token);
-            history.push("/home")
-        })
+        axios.post(url+"authenticate", credentials)
+            .then(res => {
+                setLoginClick(false);
+                sessionStorage.setItem("user", res.data.token);
+                history.push("/home")
+            })
+            .catch(err => {
+                setLoginClick(false)
+                if (err.response) {
+                    setErrMsg(err.response.data)
+                }
+            })
     }
 
     function handleSignup() {
@@ -37,6 +47,8 @@ export default function Login(props) {
     return (
         <div className="login-background">
             <div className="col-lg-4 col-sm-3" id="login-form">
+                {errMsg ? <span>{errMsg}</span> : null}
+                <br></br>
                 <form className="form-group">
                     <input id="email" className="form-control" type="email" name="username"
                         value={credentials.username} onChange={handleCredentials} required={true} autoFocus={true}
@@ -44,12 +56,12 @@ export default function Login(props) {
                     <br></br>
                     <input id="password" className="form-control" type="password" name="password" value={credentials.password}
                         placeholder="password" onChange={handleCredentials} required={true} />
-                    <button onClick={handleSubmit} className='btn login-button'>Login</button>
-                    <button onClick={handleSignup} className='btn signup-button'>signup</button>
-                    <hr />
-                    Login with google :
-                    <button className='btn google-btn'><i class="fa fa-google" aria-hidden="true"></i></button>
+                    <button onClick={handleSubmit} className='btn login-button'>{logClick?<i className="fa fa-spinner fa-spin"></i>:null} Login</button>
                 </form>
+                <button onClick={handleSignup} className='btn signup-button'>signup</button>
+                <hr />
+                Login with google :
+                <button className='btn google-btn'><i class="fa fa-google" aria-hidden="true"></i></button>
             </div>
         </div>
     )

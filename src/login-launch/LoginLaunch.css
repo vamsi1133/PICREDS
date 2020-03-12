@@ -70,6 +70,10 @@
     background-color: red;
 }
 
+#login-form span{
+    color: red;
+    font-weight: bold;
+}
 .form-group .btn{
     margin-top: 5%;
     right:20%

@@ -1,12 +1,15 @@
 const express=require('express');
 const cors = require("cors");
 const path=require('path');
-const port=process.env.PORT || 8080;
+const dotenv=require('dotenv');
 const app=express();
+
+dotenv.config();
+const port=process.env.PORT;
 
 app.use(cors());
 
-const publicPath=path.join(__dirname,'..','build');
+const publicPath=path.join(__dirname,'build');
 
 app.use(express.static(path.join(publicPath)));
 
