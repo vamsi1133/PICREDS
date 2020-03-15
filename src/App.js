@@ -6,19 +6,23 @@ import Login from './login-launch/login/Login';
 import Register from './login-launch/register/Register';
 import Home from './home/Home'
 import Wildcard from './wildcard'
+import HttpsRedirect from 'react-https-redirect';
 
 function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Launch} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/home" component={Home} />
-        <Route path="/*" component={Wildcard} />
-      </Switch>
-    </Router>
-  );
-}
+  function Routes(){
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route path="/*" component={Wildcard} />
+        </Switch>
+      </Router>
+      );
+  }
 
-export default App;
+  return <HttpsRedirect><Routes/></HttpsRedirect>
+    }
+    
+    export default App;

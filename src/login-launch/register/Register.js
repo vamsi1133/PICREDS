@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import "../LoginLaunch.css";
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import { baseUrl } from "../../config"
+
 
 
 export default function Register() {
-    const history=useHistory();
-    const url="https://picred-server.herokuapp.com/"
-    // const url="http://localhost:8000/"
+    const history = useHistory();
+    const url = baseUrl;
     const [passwordMatch, setPasswordMatch] = React.useState(false);
     const [pwdRegex, setPwdRegex] = React.useState(false);
     const [newpwdDirty, setnewpwdDirty] = React.useState(false);
     const [confpwdDirty, setconfpwdDirty] = React.useState(false);
     const [submitStatus, setSubmitStatus] = React.useState(false);
-    const [errorMsg,setErrorMsg]=React.useState("Please provide apropriate credentials.")
+    const [errorMsg, setErrorMsg] = React.useState("Please provide apropriate credentials.")
     const [credentials, setCredentials] = React.useState({
         email: "",
         username: "",
@@ -25,7 +26,6 @@ export default function Register() {
         const { name, value } = event.target;
         setCredentials(prev => ({ ...prev, [name]: value }));
         if (name === "password") {
-            console.log(value)
             passwordRegex(value);
         }
     };
@@ -61,18 +61,17 @@ export default function Register() {
         event.preventDefault();
         if (credentials.email.length > 1 && credentials.username.length > 0 && credentials.password.length > 6
             && credentials.dob.length > 0 && pwdRegex && passwordMatch) {
+            credentials.email = credentials.email.replace(/\s/g, '').toLowerCase();
+            credentials.username = credentials.username.replace(/[^A-Z0-9]+/ig, '').toLowerCase();
             setSubmitStatus(false);
-            console.log(credentials)
-            axios.post(url+"register", credentials)
+            axios.post(url + "register", credentials)
                 .then(res => {
-                    sessionStorage.setItem("user", res.data.token);
-                    // console.log(res.data.token)
-                    history.push("/home")
+                    localStorage.setItem("user", res.data.token);
+                    history.push("/")
                 })
-                .catch(err=>{
-                    if(err.response){
+                .catch(err => {
+                    if (err.response) {
                         setSubmitStatus(true);
-                        // console.log(err.response);
                         setErrorMsg(err.response.data);
                     }
                 })

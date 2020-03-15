@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { baseUrl } from "../../config"
 
 import "../LoginLaunch.css";
 import axios from "axios";
 
 export default function Login(props) {
     const history = useHistory();
-    const url = "https://picred-server.herokuapp.com/"
-    // const url = "http://localhost:8000/"
+    const url = baseUrl
     const [errMsg, setErrMsg] = React.useState("")
     const [logClick, setLoginClick] = React.useState(false)
     const [credentials, setCredentials] = React.useState({
@@ -24,12 +24,12 @@ export default function Login(props) {
     function handleSubmit(event) {
         event.preventDefault();
         setLoginClick(true)
-        console.log(credentials)
-        axios.post(url+"authenticate", credentials)
+        credentials.username=credentials.username.toLowerCase()
+        axios.post(url + "authenticate", credentials)
             .then(res => {
                 setLoginClick(false);
-                sessionStorage.setItem("user", res.data.token);
-                history.push("/home")
+                localStorage.setItem("user", res.data.token);
+                history.push("/")
             })
             .catch(err => {
                 setLoginClick(false)
@@ -52,11 +52,11 @@ export default function Login(props) {
                 <form className="form-group">
                     <input id="email" className="form-control" type="email" name="username"
                         value={credentials.username} onChange={handleCredentials} required={true} autoFocus={true}
-                        placeholder="Username or email" autoComplete="off" />
+                        placeholder="email or username" autoComplete="off" />
                     <br></br>
                     <input id="password" className="form-control" type="password" name="password" value={credentials.password}
                         placeholder="password" onChange={handleCredentials} required={true} />
-                    <button onClick={handleSubmit} className='btn login-button'>{logClick?<i className="fa fa-spinner fa-spin"></i>:null} Login</button>
+                    <button onClick={handleSubmit} className='btn login-button'>{logClick ? <i className="fa fa-spinner fa-spin"></i> : null} Login</button>
                 </form>
                 <button onClick={handleSignup} className='btn signup-button'>signup</button>
                 <hr />
