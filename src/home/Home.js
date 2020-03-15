@@ -15,7 +15,7 @@ export default function Home() {
         const token = localStorage.getItem("user");
         axios.get(url + "auth", { headers: { 'x-access-token': token } })
             .then(res => {
-                setId(res.data.username)
+                setId(res.data.email)
                 setIsLogged(true);
             })
             .catch(err => {
