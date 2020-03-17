@@ -6,7 +6,7 @@ import Register from './login-launch/register/Register';
 import Home from './home/Home'
 import Wildcard from './wildcard'
 import HttpsRedirect from 'react-https-redirect';
-
+import Search from './search/Search';
 
 function App() {
   function Routes(){
@@ -17,6 +17,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/register" component={Register} />
+          <Route  path="/search" component={Search} />
           <Route path="/*" component={Wildcard} />
         </Switch>
       </Router>
