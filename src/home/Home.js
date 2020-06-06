@@ -2,10 +2,12 @@ import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { baseUrl } from "../config";
-import Navbar from '../navbar/Navbar'
+import Navbar from '../navbar/Navbar';
+import { connect } from 'react-redux';
 
 
-export default function Home() {
+
+ function Home(props) {
     const url = baseUrl
     const token = localStorage.getItem("user");
     const [myId, setMyId] = React.useState("");
@@ -34,6 +36,10 @@ export default function Home() {
                 }
             })
     })
+
+    function reduxDisplay(){
+        props.dispatch({ type: 'USER' });
+    }
 
     function setUsername(event) {
         event.preventDefault()
@@ -73,7 +79,18 @@ export default function Home() {
             <Navbar />
             <div className="container-fluid">
                 <span>Hi! {myId}</span>
+                <br></br>
+                {/* <button onClick={reduxDisplay} className="btn">redux</button> */}
+                <h1>{props.name}</h1>
             </div>
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+      name: state.name
+    };
+  }
+
+  export default connect(mapStateToProps)(Home);

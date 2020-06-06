@@ -10,13 +10,16 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express-http-to-https": "^1.1.4",
+    "jquery": "^3.5.0",
     "react": "^16.13.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.13.0",
     "react-google-login": "^5.1.2",
     "react-https-redirect": "^1.1.0",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

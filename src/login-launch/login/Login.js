@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { baseUrl } from "../../config"
+import { baseUrl } from "../../config";
 import { GoogleLogin } from 'react-google-login';
 
 import "../LoginLaunch.css";

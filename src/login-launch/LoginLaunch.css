@@ -6,7 +6,7 @@
     z-index: 1;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url('./lbg-sm.jpg');
+    background-image: url('../resources/lbg-sm.jpg');
     background-position: center;
 }
 
@@ -128,7 +128,7 @@
 
 @media only screen and (min-device-width: 480px) {
     .login-background{
-        background-image: url('./login-background.jpg');
+        background-image: url('../resources/login-background.jpg');
     }
 
     #login-button{

@@ -13,9 +13,9 @@ export default function Navbar() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-transparent navbar-dark">
-                <a className="navbar-brand" href="#">picreds</a>
+                <a className="navbar-brand" href="#"><img className="img-fluid" src={require("./navicon.png")}/></a>
 
-              <i className='ml-auto' onClick={getSearch} class="fa fa-search" aria-hidden="true">search</i>
+              <i className='ml-auto' style={{color:"white"}} onClick={getSearch} class="fa fa-search" aria-hidden="true"> Search</i>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -26,7 +26,7 @@ export default function Navbar() {
                             <NavLink className="nav-link" to="/">Home <span class="sr-only">(current)</span></NavLink>
                         </li>
                         <li className="nav-item active">
-                            <NavLink className="nav-link" to="/">Gallery <span class="sr-only">(current)</span></NavLink>
+                            <NavLink className="nav-link" to="/profile">Profile<span class="sr-only">(current)</span></NavLink>
                         </li>
                     </ul>
                 </div>
